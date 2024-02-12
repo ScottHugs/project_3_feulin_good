@@ -41,4 +41,4 @@ CREATE TABLE petrol_stations (
   longitude)
 FROM ''
 DELIMITER ','
-CSV HEADER;
+CSV HEADER
