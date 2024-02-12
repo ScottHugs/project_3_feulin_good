@@ -4,6 +4,9 @@ const express = require('express')
 const app = express()
 const port = 8080
 
+
+app.use(express.static('client'))
+
 app.get('/test', (req, res) => {
   res.send('It is working!')
 })
