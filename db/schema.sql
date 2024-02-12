@@ -39,6 +39,6 @@ COPY petrol_stations
   comment,
   latitude, 
   longitude)
-FROM '/Users/scotthughes/sei/projects/project_3_feulin_good/db/petrol_station_data.csv'
+FROM ''
 DELIMITER ','
 CSV HEADER;

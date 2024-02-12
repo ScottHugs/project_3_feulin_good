@@ -4,10 +4,12 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs')
 const port = 8080
+const stationRouter = require('./routes/station_router')
 
 
 app.use(express.static('client'))
 
+app.use(express.json())
 
 app.get('/', (req, res) => {
   const googleApiKey = process.env.GOOGLE_API_KEY
@@ -22,7 +24,7 @@ app.get('/test', (req, res) => {
 })
 
 
-
+app.use(stationRouter)
 
 
 app.listen(port, () => {
