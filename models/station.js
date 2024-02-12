@@ -9,6 +9,7 @@ function findAll(){
       return db.query(sql).then(result => result.rows)
 }
 
+
 module.exports = {
   findAll
 }
