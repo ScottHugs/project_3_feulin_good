@@ -21,7 +21,7 @@ CREATE TABLE petrol_stations (
 ); 
 
 
-COPY petrol_stations
+\COPY petrol_stations
 (  object_id,
   featuretype,
   description, 
@@ -41,4 +41,4 @@ COPY petrol_stations
   longitude)
 FROM ''
 DELIMITER ','
-CSV HEADER;
+CSV HEADER
