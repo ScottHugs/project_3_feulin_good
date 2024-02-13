@@ -10,5 +10,12 @@ router.get('/api/stations/all', (req, res) => {
 
 })
 
+router.get('/api/stations/random', (req, res) => {
+
+  Station.findRandom()
+    .then(station => res.json(station))
+
+})
+
 
 module.exports = router
