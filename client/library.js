@@ -96,4 +96,11 @@ function spotlightInfo(){
 
 }
 
+const spotlightRefresh = document.querySelector('.spotlight a')
+spotlightRefresh.addEventListener('click', handleClickRefresh)
+
+function handleClickRefresh() {
+  spotlightInfo()
+}
+
 spotlightInfo()
