@@ -1,5 +1,7 @@
-import renderMarkers from "./library.js"
-
+import {
+  mapCenter, 
+  renderMarkers
+} from './library.js'
 
 let map;
 
@@ -12,8 +14,9 @@ async function initMap() {
     minZoom: 9,
   });
 
-
   renderMarkers(map)
+  mapCenter(map)
+
 }
 
-initMap();
+initMap()

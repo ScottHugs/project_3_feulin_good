@@ -36,7 +36,7 @@ function markerInfo(marker, station){
   });
 }
 
-export default function renderMarkers(map) {
+export function renderMarkers(map) {
 
   fetch('http://localhost:8080/api/stations/all')
     .then(res => res.json())
@@ -59,4 +59,23 @@ export default function renderMarkers(map) {
       
       nearestInfo(stations)
     })
+}
+
+export function mapCenter(map) {
+  var latlng = map.getCenter();
+  var lat = latlng.lat();
+  var lng = latlng.lng();
+  console.log(lat, lng);
+
+  const mapCenter = document.querySelector('.map-center')
+
+  const latElem = document.createElement('h5')
+  latElem.textContent = lat;
+
+  const lngElem = document.createElement('h5')
+  lngElem.textContent = lng;
+
+  mapCenter.appendChild(latElem)
+  mapCenter.appendChild(lngElem)
+
 }
