@@ -22,6 +22,19 @@ function nearestInfo(stations) {
     nearestElem.appendChild(stationInfoElem)
   }
 }
+function markerInfo(marker, station){
+  const infowindow = new google.maps.InfoWindow({
+    content: `<h2>${station.name}</h2> 
+             <p>${station.address}</p>`
+  });
+  
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+    });
+  });
+}
 
 export default function renderMarkers(map) {
 
@@ -35,11 +48,13 @@ export default function renderMarkers(map) {
           lng: Number(station.longitude)
         }
         
-        new google.maps.Marker({
+        const marker = new google.maps.Marker({
           position: myLatLng,
           map,
           title: station.name
         })
+
+        markerInfo(marker, station)
       }
       
       nearestInfo(stations)
