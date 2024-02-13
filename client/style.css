@@ -19,3 +19,10 @@ html, body {
 #map {
   height: 100%;
 }
+
+.owner {
+  display: flex;
+  justify-content: space-between;
+}
+
+
