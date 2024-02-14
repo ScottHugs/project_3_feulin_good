@@ -5,12 +5,12 @@ import {
 
 let map;
 
-async function initMap() {
+async function initMap(latAndLon) {
   const { Map } = await google.maps.importLibrary("maps");
 
   map = new Map(document.getElementById("map"), {
 
-    center: { lat: -38.400654164953046, lng: 146.15877161420863 },
+    center: { lat: latAndLon.lat, lng: latAndLon.lon },
     zoom: 13,
     minZoom: 9
   });
@@ -21,13 +21,17 @@ async function initMap() {
 
 }
 
-initMap()
 
-// let currentLat
-// let currentLng
+function getUserLocation() {
+  navigator.geolocation.getCurrentPosition(getLatAndLon)
+}
 
-// function currentPosition() {navigator.geolocation.getCurrentPosition((position) => {
-//     currentLat = position.coords.latitude
-//     currentLng = position.coords.longitude
+function getLatAndLon (position) {
+  let latAndLon = {}
+  latAndLon.lat = position.coords.latitude
+  latAndLon.lon = position.coords.longitude
 
-// })};
+  initMap(latAndLon)
+}
+
+getUserLocation()
