@@ -12,7 +12,7 @@ async function initMap(latAndLon) {
 
     center: { lat: latAndLon.lat, lng: latAndLon.lon },
     zoom: 13,
-    minZoom: 9
+    //minZoom: 9
   });
 
 

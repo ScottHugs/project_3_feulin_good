@@ -36,11 +36,22 @@ function markerInfo(marker, station){
   });
 }
 
+
+
 export function renderMarkers(map) {
 
   fetch('http://localhost:8080/api/stations/all')
     .then(res => res.json())
     .then(stations => {
+
+      const icons = {
+        "BP" : "/icons/BP.png",
+        "7-Eleven Pty Ltd" : "/icons/7_eleven.png",
+        "Caltex" : "/icons/caltex.png",
+        "Shell" : "/icons/BP.png",
+        "United" : "/icons/united.png",
+        "Ampol" : "/icons/ampol.png"
+      }
 
       for(let station of stations) {
         let myLatLng = {
@@ -48,10 +59,20 @@ export function renderMarkers(map) {
           lng: Number(station.longitude)
         }
         
+        
+        let icon = ""
+
+        if (station.owner in icons){
+          icon = icons[station.owner]
+        } else {
+          icon = "/icons/petrol_station.png"
+        }
+
         const marker = new google.maps.Marker({
           position: myLatLng,
           map,
-          title: station.name
+          title: station.name,
+          icon: icon
         })
 
         markerInfo(marker, station)
