@@ -105,8 +105,6 @@ function handleClickRefresh() {
 
 spotlightInfo()
 
-
-
 function getCurrentWeather(lat, lng) {
   
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=347533d0e42725230e0bb151a7cb2eea`)

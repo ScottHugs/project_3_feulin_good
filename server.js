@@ -6,6 +6,7 @@ app.set('view engine', 'ejs')
 const port = 8080
 const stationRouter = require('./routes/station_router')
 const ownerRouter = require('./routes/owner_router')
+const statsRouter = require('./routes/stats_router')
 
 
 app.use(express.static('client'))
@@ -27,6 +28,7 @@ app.get('/test', (req, res) => {
 
 app.use(stationRouter)
 app.use(ownerRouter)
+app.use(statsRouter)
 
 
 app.listen(port, () => {
