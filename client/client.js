@@ -1,57 +1,130 @@
-timeDisplayUpdater()
 
+
+import { timeDisplayUpdater } from "./features/clock.js"
+import { spotlightInfo } from "./features/spotlight.js"
+import { getStats } from "./features/stats.js"
+import { mapCenter } from "./features/centerLocation.js"
+import { nearestInfo } from "./features/nearestStations.js"
+
+let map;
+
+
+getUserLocation()
+
+timeDisplayUpdater()
 setInterval(timeDisplayUpdater,1000)
 
-function timeDisplayUpdater(){
-  const timeDisplay = document.querySelector('.time-display')
-  const timeSection = document.querySelector('.time-section')
+spotlightInfo()
 
-  let time = dayjs().format('ddd hh:mm:ss a')
-  timeDisplay.textContent = time
+getStats()
 
-  let hour = dayjs().hour()
-  if (hour >= 12) {
-    timeSection.classList.add('pm')
-  } else {
-    timeSection.classList.remove('pm')
-  }
+nearestInfo()
+
+
+function getUserLocation() {
+  navigator.geolocation.getCurrentPosition(getLatAndLon)
+}
+
+function getLatAndLon (position) {
+  let latAndLon = {}
+  latAndLon.lat = position.coords.latitude
+  latAndLon.lon = position.coords.longitude
+  
+  initMap(latAndLon)
+}
+
+async function initMap(latAndLon) {
+  const { Map } = await google.maps.importLibrary("maps");
+
+  map = new Map(document.getElementById("map"), {
+
+    center: { lat: latAndLon.lat, lng: latAndLon.lon },
+    zoom: 13,
+    //minZoom: 9
+  });
+
+
+  renderMarkers(map)
+  mapCenter(map)
 
 }
 
-fetch('http://localhost:8080/api/stats')
-  .then(res => res.json())
-  .then(stats => {
-    let totalStations = stats.total_stations
-    let totalOwners = stats.total_owners
+function renderMarkers(map) {
 
-    let totalStationsElem = document.createElement('h4')
-    totalStationsElem.textContent = 'total station: ' + totalStations
+  fetch('http://localhost:8080/api/stations/all')
+    .then(res => res.json())
+    .then(stations => {
 
-    let totalOwnersElem = document.createElement('h4')
-    totalOwnersElem.textContent = 'total owners: ' + totalOwners
+      const icons = {
+        "BP" : "/icons/BP.png",
+        "7-Eleven Pty Ltd" : "/icons/7_eleven.png",
+        "Caltex" : "/icons/caltex.png",
+        "Shell" : "/icons/BP.png",
+        "United" : "/icons/united.png",
+        "Ampol" : "/icons/ampol.png"
+      }
 
-    let statsElem = document.querySelector('.stats')
+      for(let station of stations) {
+        let myLatLng = {
+          lat: Number(station.latitude),
+          lng: Number(station.longitude)
+        }
+        
+        
+        let icon = ""
 
-    statsElem.appendChild(totalStationsElem)
-    statsElem.appendChild(totalOwnersElem)
+        if (station.owner in icons){
+          icon = icons[station.owner]
+        } else {
+          icon = "/icons/petrol_station.png"
+        }
 
-    let totalStationsByOwner = stats.owners
-    for (let item of totalStationsByOwner) {
-      let owner = item.owner
-      let total = item.count
-      let ownerElem = document.createElement('h5')
-      ownerElem.textContent = owner
-      let totalElem = document.createElement('h5')
-      totalElem.textContent = total
+        const marker = new google.maps.Marker({
+          position: myLatLng,
+          map,
+          title: station.name,
+          icon: icon
+        })
 
-      let ownerDivElem = document.createElement('div')
-      ownerDivElem.classList.add('owner-stations')
+        markerInfo(marker, station)
+      }
+      
+    })
+}
 
-      statsElem.appendChild(ownerDivElem)
-      ownerDivElem.appendChild(ownerElem)
-      ownerDivElem.appendChild(totalElem)
-    }
-  })
+function markerInfo(marker, station){
+  const infowindow = new google.maps.InfoWindow({
+    content: `<h2>${station.name}</h2> 
+             <p>${station.address}</p>`
+  });
+  
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+    });
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
