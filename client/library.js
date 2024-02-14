@@ -62,10 +62,9 @@ export function renderMarkers(map) {
 }
 
 export function mapCenter(map) {
-  var latlng = map.getCenter();
-  var lat = latlng.lat();
-  var lng = latlng.lng();
-  console.log(lat, lng);
+  let latlng = map.getCenter();
+  let lat = latlng.lat();
+  let lng = latlng.lng();
 
   const mapCenter = document.querySelector('.map-center')
 
@@ -78,6 +77,7 @@ export function mapCenter(map) {
   mapCenter.appendChild(latElem)
   mapCenter.appendChild(lngElem)
 
+  getCurrentWeather(lat, lng)
 }
 
 function spotlightInfo(){
@@ -104,3 +104,34 @@ function handleClickRefresh() {
 }
 
 spotlightInfo()
+
+
+
+function getCurrentWeather(lat, lng) {
+  
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=347533d0e42725230e0bb151a7cb2eea`)
+  .then(res => res.json())
+  .then(result => {
+    let temp = result.main.temp
+    let location = result.name
+    let humidity = result.main.humidity
+
+    const currentWather = document.querySelector('.current-weather')
+
+
+    let locationElem = document.createElement('h5')
+    locationElem.textContent = 'Location: ' + location
+
+    let tempElem = document.createElement('h5')
+    tempElem.textContent = 'Temperature: ' + temp
+
+    let humidityElem = document.createElement('h5')
+    humidityElem.textContent = 'Humidity: ' + humidity
+
+    currentWather.appendChild(locationElem)
+    currentWather.appendChild(tempElem)
+    currentWather.appendChild(humidityElem)
+
+  })
+
+}
