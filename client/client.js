@@ -20,9 +20,6 @@ getStats()
 
 nearestInfo()
 
-getCurrentWeather()
-
-
 function getUserLocation() {
   navigator.geolocation.getCurrentPosition(getLatAndLon)
 }
@@ -49,7 +46,7 @@ async function initMap(latAndLon) {
 
   renderMarkers(map)
   mapCenter(map)
-
+  getCurrentWeather(map)
 
   const lookupAddressBtn = document.querySelector('.map-center button')
   lookupAddressBtn.addEventListener('click', () => {
