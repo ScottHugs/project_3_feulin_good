@@ -1,5 +1,7 @@
-export function getCurrentWeather(lat, lng) {
-  
+export function getCurrentWeather() {
+  let lat = Number(document.querySelector('.map-center > h5 > span').textContent)
+ let lng = Number(document.querySelector('.map-center > h5 + h5 > span').textContent)
+
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=347533d0e42725230e0bb151a7cb2eea`)
   .then(res => res.json())
   .then(result => {
