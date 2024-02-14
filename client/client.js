@@ -1,10 +1,10 @@
-
-
 import { timeDisplayUpdater } from "./features/clock.js"
 import { spotlightInfo } from "./features/spotlight.js"
 import { getStats } from "./features/stats.js"
 import { mapCenter } from "./features/centerLocation.js"
 import { nearestInfo } from "./features/nearestStations.js"
+import { getCurrentWeather } from "./features/weather.js";
+import { getAddressOfCenterLocation } from "./features/getAddressOfCenterLocation.js"
 
 let map;
 
@@ -19,6 +19,8 @@ spotlightInfo()
 getStats()
 
 nearestInfo()
+
+getCurrentWeather()
 
 
 function getUserLocation() {
@@ -41,12 +43,22 @@ async function initMap(latAndLon) {
     center: { lat: latAndLon.lat, lng: latAndLon.lon },
     zoom: 13,
     //minZoom: 9
-  });
+  })
 
+  const geocoder = new google.maps.Geocoder()
 
   renderMarkers(map)
   mapCenter(map)
 
+
+  const lookupAddressBtn = document.querySelector('.map-center button')
+  lookupAddressBtn.addEventListener('click', () => {
+    getAddressOfCenterLocation(geocoder)
+  })
+
+  map.addListener('center_changed', () => {
+    mapCenter(map)
+  })
 }
 
 function renderMarkers(map) {
