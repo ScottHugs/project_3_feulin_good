@@ -2,18 +2,42 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  /* height: 100%; */
   box-sizing: border-box;
 }
 
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .content-wrapper {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 250px 3fr 250px;
   height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid black
+}
+
+.content-wrapper h2 {
+  font-size: 20px;
+}
+
+.left-content {
+  display: grid;
+  grid-template-rows: 80px auto 120px 120px;
+}
+
+.right-content {
+  display: grid;
+  grid-template-rows: 50px 100px auto;
+}
+
+.spotlight {
+  background-color: mistyrose;
+}
+
+.spotlight a {
+  background-color: red;
 }
 
 #map {
