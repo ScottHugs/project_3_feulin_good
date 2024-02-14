@@ -30,7 +30,6 @@ function getLatAndLon (position) {
   let latAndLon = {}
   latAndLon.lat = position.coords.latitude
   latAndLon.lon = position.coords.longitude
-  console.log(latAndLon)
 
   initMap(latAndLon)
 }
