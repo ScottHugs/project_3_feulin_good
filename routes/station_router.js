@@ -19,18 +19,19 @@ router.get('/api/stations/random', (req, res) => {
 
 router.get('/api/stations/bounds', (req, res) => {
 
-  let topLeftCoords = {
-    lat: -38.184397,
-    lon: 145.634483
+  let topRightCoords = {
+    lat: req.query.neLat,
+    lon: req.query.neLon
   }
 
-  let bottomRightCoords = {
-    lat: -38.650826,
-    lon: 146.696233
+  let bottomLeftCoords = {
+    lat: req.query.swLat,
+    lon: req.query.swLon
   }
 
-  Station.getStationsWithinBounds(topLeftCoords, bottomRightCoords)
+  Station.getStationsWithinBounds(topRightCoords, bottomLeftCoords)
     .then(stations => res.json(stations))
+  
 })
 
 
