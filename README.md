@@ -1,15 +1,5 @@
 # Servo App - Google Maps API
 
-# A google maps API based app that conveys information of petrol stations around Australai
-
-This was project 3 of our General Assembly sofware engineering intensive which is a client driven app focused on using the Google Maps API to interact with a server side sql database, housing data of over 5000 petrol stations Australia wide. The app includes several features that interact with the current map location including the following:
-* information spotlight of a random petrol station
-* stats of the various petrol station owners/companies
-* latitude and longitude display
-* the local time
-* weather information
-* information about 10 'nearby' petrol stations. 
-
 # TEAM MEMBERS
 - Scott Hughes
 - Jason Truong
@@ -22,6 +12,28 @@ This was a group task with a focus on team / pair coding and file managment thro
 
 Part way through the project the code was refactored to maintain or more logical and comprehendable structure seperating each feature (or the key functions of that feature) into a seperate file, with a initialisation client file. 
 
+- Trello: add name to each task, get each quest level done each day, helpful in managing task flow
+- Git: communicate before commit and pull request, help to update each task easily
+- Team work: colaborate to review each pair work and contribute idea, help out individual task when stuck, reading API doc together for quicker getting info
+- Work well in team: support and respect each other when doing tasks, help the other person or pair when they need, well communicate and make sure everyone on the same page so work well in intercorss feature
+- Challenges: need more time for reading documentation, refactoring code, resolve git conflict at the start,  
+
+
+# Demo APP
+- Overview - weather center, bound - Jason
+## A google maps API based app that conveys information of petrol stations around Australia
+This was project 3 of our General Assembly sofware engineering intensive which is a client driven app focused on using the Google Maps API to interact with a server side sql database, housing data of over 5000 petrol stations Australia wide. The app includes several features that interact with the current map location including the following:
+* information spotlight of a random petrol station
+* stats of the various petrol station owners/companies
+* latitude and longitude display
+* the local time
+* weather information
+* information about 10 'nearby' petrol stations. 
+
+## Feature
+- Bound - Scott
+- Weather center location - Leo
+- Stats - Julia
 
 # Tech Used 
 - Javascript 

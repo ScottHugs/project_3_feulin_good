@@ -3,8 +3,7 @@ const db = require('../db')
 function findAll(){
   const sql = `
       SELECT *
-      FROM petrol_stations
-      LIMIT 400;
+      FROM petrol_stations;
       `
       return db.query(sql).then(result => result.rows)
 }
