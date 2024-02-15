@@ -19,14 +19,14 @@ function findRandom(){
   return db.query(sql).then(result => result.rows[0])
 }
 
-function getStationsWithinBounds(topLeftCoords, bottomRightCoords) {
+function getStationsWithinBounds(topRightCoords, bottomLeftCoords) {
   const sql = `
   SELECT *
   FROM petrol_stations
   WHERE latitude BETWEEN $3 AND $1
-  AND longitude BETWEEN $2 AND $4;
+  AND longitude BETWEEN $4 AND $2;
   `
-  return db.query(sql, [topLeftCoords.lat, topLeftCoords.lon, bottomRightCoords.lat, bottomRightCoords.lon]).then(result => result.rows)
+  return db.query(sql, [topRightCoords.lat, topRightCoords.lon, bottomLeftCoords.lat, bottomLeftCoords.lon]).then(result => result.rows)
 }
 
 

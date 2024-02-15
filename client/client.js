@@ -44,27 +44,60 @@ async function initMap(latAndLon) {
 
   const geocoder = new google.maps.Geocoder()
 
-  renderMarkers(map)
   mapCenter(map)
   getCurrentWeather(map)
+  
 
   const lookupAddressBtn = document.querySelector('.map-center button')
   lookupAddressBtn.addEventListener('click', () => {
     getAddressOfCenterLocation(geocoder)
   })
 
-  map.addListener('center_changed', () => {
+  map.addListener('idle', () => {
     mapCenter(map)
+    renderMarkersWithinBounds(map)
   })
 }
 
-function renderMarkers(map) {
 
-  fetch('http://localhost:8080/api/stations/all')
+
+function markerInfo(marker, station){
+  const infowindow = new google.maps.InfoWindow({
+    content: `<h2>${station.name}</h2> 
+             <p>${station.address}</p>`
+  });
+  
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+    });
+  });
+}
+
+function renderMarkersWithinBounds (map) {
+
+  let bounds = map.getBounds()
+  //let nE = bounds.getNorthEast().lat()
+
+  
+  let ne = {
+    lat: bounds.getNorthEast().lat(),
+    lon: bounds.getNorthEast().lng()
+  }
+  
+  let sw = {
+    lat: bounds.getSouthWest().lat(),
+    lon: bounds.getSouthWest().lat()
+  }
+
+
+  let url = `http://localhost:8080/api/stations/bounds?neLat=${ne.lat}&neLon=${ne.lon}&swLat=${sw.lat}&swLon=${sw.lon}`
+
+  fetch(url)
     .then(res => res.json())
     .then(stations => {
-
-      const icons = {
+        const icons = {
         "BP" : "/icons/BP.png",
         "7-Eleven Pty Ltd" : "/icons/7_eleven.png",
         "Caltex" : "/icons/caltex.png",
@@ -97,24 +130,8 @@ function renderMarkers(map) {
 
         markerInfo(marker, station)
       }
-      
     })
 }
-
-function markerInfo(marker, station){
-  const infowindow = new google.maps.InfoWindow({
-    content: `<h2>${station.name}</h2> 
-             <p>${station.address}</p>`
-  });
-  
-  marker.addListener("click", () => {
-    infowindow.open({
-      anchor: marker,
-      map,
-    });
-  });
-}
-
 
 
 
