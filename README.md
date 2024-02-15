@@ -1,8 +1,12 @@
 # Servo App - Google Maps API
 
-## 
+# TEAM MEMBERS
+- Scott Hughes
+- Jason Truong
+- Julia Mazzoni
+- Ryo Tajiri
 
-# A google maps API based app that conveys information of petrol stations around Australai
+# A google maps API based app that conveys information of petrol stations around Australia
 
 This was project 3 of our General Assembly sofware engineering intensive which is a client driven app focused on using the Google Maps API to interact with a server side sql database, housing data of over 5000 petrol stations Australia wide. The app includes several features that interact with the current map location including the following:
 * information spotlight of a random petrol station
@@ -11,12 +15,6 @@ This was project 3 of our General Assembly sofware engineering intensive which i
 * the local time
 * weather information
 * information about 10 'nearby' petrol stations. 
-
-# TEAM MEMBERS
-- Scott Hughes
-- Jason Truong
-- Julia Mazzoni
-- Ryo Tajiri
 
 # Project Planning and Problem Solving 
 
