@@ -40,7 +40,7 @@ html, body {
 
 .right-content {
   display: grid;
-  grid-template-rows: 50px 130px auto;
+  grid-template-rows: 50px 180px auto;
 }
 
 .spotlight {
