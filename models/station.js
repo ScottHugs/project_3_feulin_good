@@ -28,7 +28,6 @@ function getStationsWithinBounds(topRightCoords, bottomLeftCoords) {
   return db.query(sql, [topRightCoords.lat, topRightCoords.lon, bottomLeftCoords.lat, bottomLeftCoords.lon]).then(result => result.rows)
 }
 
-
 module.exports = {
   findAll,
   findRandom, 

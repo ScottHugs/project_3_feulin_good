@@ -24,10 +24,10 @@ export function getCurrentWeather(map) {
     cityElem.textContent = location
 
     let tempElem = document.querySelector('.user-location-weather > p + p > span')
-    tempElem.textContent = temp
+    tempElem.textContent = temp + 'ºC'
 
     let humidityElem = document.querySelector('.user-location-weather > p + p + p > span')
-    humidityElem.textContent = humidity
+    humidityElem.textContent = humidity + '%'
   })
 }
 
@@ -46,9 +46,9 @@ export function getCenterWeather() {
     cityElem.textContent = location
 
     let tempElem = document.querySelector('.map-center-location-weather > p + p > span')
-    tempElem.textContent = temp
+    tempElem.textContent = temp + 'ºC'
 
     let humidityElem = document.querySelector('.map-center-location-weather > p + p + p > span')
-    humidityElem.textContent = humidity
+    humidityElem.textContent = humidity + '%'
   })
 }
