@@ -30,7 +30,7 @@ export function getStats () {
           let ownerDivElem = document.createElement('div')
           ownerDivElem.classList.add('owner-stations')
           if(i%2 === 0){
-          ownerDivElem.style.backgroundColor = "lightgray"
+          ownerDivElem.style.backgroundColor = "cadetblue"
           }
     
           statsElem.appendChild(ownerDivElem)
