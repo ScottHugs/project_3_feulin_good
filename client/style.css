@@ -13,35 +13,128 @@ html, body {
 .content-wrapper {
   display: grid;
   grid-template-columns: 250px 3fr 250px;
+  /* gap: 2px; */
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid black
+  border: 1px solid black;
+  font-size: small;
 }
 
 .content-wrapper h2 {
+  font-weight: bold;
   font-size: 20px;
+  margin: 10px 0;
+}
+
+.content-wrapper section {
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .left-content {
   display: grid;
-  grid-template-rows: 80px auto 120px 120px;
+  grid-template-rows: 120px 400px 1.5fr 1fr;
+  /* gap: 2px; */
+  /* background-color: black; */
 }
 
 .right-content {
   display: grid;
-  grid-template-rows: 50px 100px auto;
+  grid-template-rows: 50px 130px auto;
 }
 
 .spotlight {
   background-color: mistyrose;
 }
 
-.spotlight a {
-  background-color: red;
+.spotlight p {
+  margin-bottom: 10px;
+}
+
+.stats {
+  background-color: rgb(173, 223, 223);
+}
+
+.stats h4 {
+  font-weight: bold;
+  margin: 3px;
+}
+
+.stats div {
+  border-top: 1px solid black;
+} 
+
+.current-weather {
+ background-color: rgb(178, 237, 178);
+}
+
+.current-weather button,
+.spotlight a,
+.map-center button {
+  background-color: gray;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 10px 0;
+  color: white;
+}
+
+.about {
+  background-color: lightgray;
+}
+
+.about h3 {
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+.about li {
+  margin-top: 5px;
+}
+
+.time-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.time-section h2 {
+  display: inline;
+}
+
+.time-section img {
+  width: 25px;
+  border: none;
+}
+
+.map-center{
+ background-color: rgb(224, 166, 166);
+}
+
+.map-center-location-weather {
+  margin-top: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.nearest {
+  background-color: rgb(166, 209, 224);
+}
+
+.station-info {
+  margin: 8px 0;
+  border-top: 1px solid black;
+  padding-top: 5px;
+}
+
+.station-info p {
+  margin: 3px 0;
 }
 
 #map {
   height: 100%;
+  border: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
 
 .owner-stations {
