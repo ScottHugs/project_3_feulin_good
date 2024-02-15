@@ -19,7 +19,7 @@ export function getStats () {
   
       let totalStationsByOwner = stats.owners
       for (let i=0; i<totalStationsByOwner.length; i++) {
-        if(i%2 === 0){
+        
           let owner = totalStationsByOwner[i].owner
           let total = totalStationsByOwner[i].count
           let ownerElem = document.createElement('h5')
@@ -29,28 +29,15 @@ export function getStats () {
     
           let ownerDivElem = document.createElement('div')
           ownerDivElem.classList.add('owner-stations')
+          if(i%2 === 0){
           ownerDivElem.style.backgroundColor = "lightgray"
-    
-          statsElem.appendChild(ownerDivElem)
-          ownerDivElem.appendChild(ownerElem)
-          ownerDivElem.appendChild(totalElem)
-        }else{
-          let owner = totalStationsByOwner[i].owner
-          let total = totalStationsByOwner[i].count
-          let ownerElem = document.createElement('h5')
-          ownerElem.textContent = owner
-          let totalElem = document.createElement('h5')
-          totalElem.textContent = total
-    
-          let ownerDivElem = document.createElement('div')
-          ownerDivElem.classList.add('owner-stations')
+          }
     
           statsElem.appendChild(ownerDivElem)
           ownerDivElem.appendChild(ownerElem)
           ownerDivElem.appendChild(totalElem)
         }
       }
-    })
-}
+    )}
 
 
