@@ -33,14 +33,14 @@ html, body {
 
 .left-content {
   display: grid;
-  grid-template-rows: 120px 400px 1.5fr 1fr;
+  grid-template-rows: 130px 400px 1.2fr 1fr;
   /* gap: 2px; */
   /* background-color: black; */
 }
 
 .right-content {
   display: grid;
-  grid-template-rows: 50px 180px auto;
+  grid-template-rows: 60px 180px auto;
 }
 
 .spotlight {
@@ -51,8 +51,12 @@ html, body {
   margin-bottom: 10px;
 }
 
+.spotlight h4 {
+  font-weight: bold;
+}
+
 .stats {
-  background-color: rgb(173, 223, 223);
+  background-color: rgb(112, 175, 179);
 }
 
 .stats h4 {
@@ -65,7 +69,11 @@ html, body {
 } 
 
 .current-weather {
- background-color: rgb(178, 237, 178);
+ background-color: #bcdfc9;
+}
+
+.current-weather h3 {
+  font-weight: bold;
 }
 
 .current-weather button,
@@ -73,9 +81,11 @@ html, body {
 .map-center button {
   background-color: gray;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 10px 0;
   color: white;
+  cursor: pointer;
+  border: none;
 }
 
 .about {
@@ -90,6 +100,10 @@ html, body {
 
 .about li {
   margin-top: 5px;
+}
+
+.about footer {
+  margin-top: 20px;
 }
 
 .time-section {
@@ -109,16 +123,15 @@ html, body {
 }
 
 .map-center{
- background-color: rgb(224, 166, 166);
+ background-color: rgb(226, 180, 180);
 }
 
 .map-center-location-weather {
   margin-top: 20px;
-  /* margin-bottom: 20px; */
 }
 
 .nearest {
-  background-color: rgb(166, 209, 224);
+  background-color: #ece6a3;
 }
 
 .station-info {
@@ -133,8 +146,8 @@ html, body {
 
 #map {
   height: 100%;
-  border: 2px solid black;
-  /* border-bottom: 2px solid black; */
+  border: 1px solid black;
+  border-bottom: 2px solid black;
 }
 
 .owner-stations {
@@ -143,7 +156,7 @@ html, body {
 }
 
 .pm {
-  background-color: black;
+  background-color: rgb(67, 64, 64);
   color: white;
 }
 
